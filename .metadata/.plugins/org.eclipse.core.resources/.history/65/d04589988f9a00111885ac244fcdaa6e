@@ -1,0 +1,49 @@
+public class Lista {
+	// Propriedades da classe
+	private No cabeca = null;
+	
+	//Métodos da classe
+	public void inserir(int numero) {
+		if (cabeca == null) {
+			cabeca = new No(numero, null, cabeca); // 2 referencias a cabeça, a nova  e uma velha  
+		}
+	}
+	
+	public void excluir(int numero){
+		//caso muito fácil: lista vazia
+		if (cabeca == null) {
+			return;
+		}
+		
+		//caso fácil: excluir o primeiro nó da lista 
+		if (cabeca.getNumero() == numero) {
+			cabeca = cabeca.getProximo();
+			cabeca.setAnterior(null); //troca
+			return;
+		}
+		
+		//procura do número a ser excluido
+		No ponteiro = cabeca;
+		while ((ponteiro != null) && (ponteiro.getNumero() != numero)) {
+			ponteiro = ponteiro.getProximo();
+		}
+		
+		//caso díficil: o número não foi 
+		if (ponteiro == null) {
+			return;
+		}
+		
+		//caso MUITO dificil: numero não encontrado
+		ponteiro.getAnterior().setProximo(ponteiro.getProximo());
+		ponteiro.getProximo().setAnterior(ponteiro.getAnterior()); 
+			//Correção dos ponteiros 
+	}
+		public void imprimir() {
+			No ponteiro = cabeca;
+			while (ponteiro != null) {
+				System.out.println(ponteiro.getNumero());
+				ponteiro = ponteiro.getProximo();
+			}
+		}
+	}
+}

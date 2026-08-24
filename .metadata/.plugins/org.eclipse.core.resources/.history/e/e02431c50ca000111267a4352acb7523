@@ -1,0 +1,20 @@
+public class Lista {
+	//propriedade 
+	private No cabeca = null;
+	
+	//métodos da classe
+	public void inserir(int numero) {
+		//cenario fácil: lista vazia
+		if (cabeca == null) {
+			cabeca = new No(numero, null); //não pode botar cabeca aqui, apontaria pra cabeca "antiga"
+			cabeca.setProximo(cabeca);
+			return;
+		}
+		
+		//cenario díficil: lista não vazia
+		No ultimo = cabeca;
+		while (ultimo.getProximo() != cabeca) {
+			ultimo = ultimo.getProximo();
+		}
+	}
+}

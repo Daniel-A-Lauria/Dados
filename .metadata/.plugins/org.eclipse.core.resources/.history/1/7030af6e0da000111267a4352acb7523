@@ -1,0 +1,7 @@
+public class No {
+	//propriedades
+	private int numero = 0;
+	private No proximo = null;
+	
+
+}
